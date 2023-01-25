@@ -20,6 +20,7 @@
 |1001. A－B|[링크](./%EB%B0%B1%EC%A4%80/Bronze/1001.%E2%80%85A%EF%BC%8DB/A%EF%BC%8DB.java)|
 |1008. A／B|[링크](./%EB%B0%B1%EC%A4%80/Bronze/1008.%E2%80%85A%EF%BC%8FB/README.md)|
 |10170. NFC West vs North|[링크](./%EB%B0%B1%EC%A4%80/Bronze/10170.%E2%80%85NFC%E2%80%85West%E2%80%85vs%E2%80%85North/NFC%E2%80%85West%E2%80%85vs%E2%80%85North.java)|
+|10430. 나머지|[링크](./%EB%B0%B1%EC%A4%80/Bronze/10430.%E2%80%85%EB%82%98%EB%A8%B8%EC%A7%80/%EB%82%98%EB%A8%B8%EC%A7%80.java)|
 |10718. We love kriii|[링크](./%EB%B0%B1%EC%A4%80/Bronze/10718.%E2%80%85We%E2%80%85love%E2%80%85kriii/We%E2%80%85love%E2%80%85kriii.java)|
 |1075. 나누기|[링크](./%EB%B0%B1%EC%A4%80/Bronze/1075.%E2%80%85%EB%82%98%EB%88%84%EA%B8%B0/%EB%82%98%EB%88%84%EA%B8%B0.java)|
 |10809. 알파벳 찾기|[링크](./%EB%B0%B1%EC%A4%80/Bronze/10809.%E2%80%85%EC%95%8C%ED%8C%8C%EB%B2%B3%E2%80%85%EC%B0%BE%EA%B8%B0/%EC%95%8C%ED%8C%8C%EB%B2%B3%E2%80%85%EC%B0%BE%EA%B8%B0.java)|
