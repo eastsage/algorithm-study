@@ -1,12 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Main {
-    static Set<Integer> set = new HashSet<>();
+    static boolean[] pos;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,15 +17,22 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
             max += arr[i];
         }
+        pos = new boolean[max + 1];
         int sum = 0;
         weigh(arr, sum, n, 0);
-        System.out.println(max - set.size());
+        int count = 0;
+        for (int i = 1; i <= max; i++) {
+            if (!pos[i]) {
+                count++;
+            }
+        }
+        System.out.println(count);
     }
 
     static void weigh(int[] arr, int sum, int n, int depth) {
         if (depth == n) {
             if (sum > 0) {
-                set.add(sum);
+                pos[sum] = true;
             }
             return;
         }
