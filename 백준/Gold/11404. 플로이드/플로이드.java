@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class Main {
     static int n, m;
     static int[][] graph;
-    static final int INF = 1000000000;
+    static final int INF = 1000000000; // 1,000,000,000
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,17 +15,11 @@ public class Main {
         m = Integer.parseInt(br.readLine());
 
         graph = new int[n + 1][n + 1];
-//        for (int[] ints : graph) {
-//            Arrays.fill(ints, INF);
-//        }
-//        for (int i = 0; i < graph.length; i++) {
-//            graph[i][i] = 0;
-//        }
+        for (int[] ints : graph) {
+            Arrays.fill(ints, INF);
+        }
         for (int i = 0; i < graph.length; i++) {
-            for (int j = 0; j < graph.length; j++) {
-                if(i == j) continue;
-                graph[i][j] = INF;
-            }
+            graph[i][i] = 0;
         }
 
         StringTokenizer st;
