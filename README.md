@@ -126,6 +126,7 @@
 |1753. 최단경로|[링크](./%EB%B0%B1%EC%A4%80/Gold/1753.%E2%80%85%EC%B5%9C%EB%8B%A8%EA%B2%BD%EB%A1%9C/README.md)|
 |2447. 별 찍기 － 10|[링크](./%EB%B0%B1%EC%A4%80/Gold/2447.%E2%80%85%EB%B3%84%E2%80%85%EC%B0%8D%EA%B8%B0%E2%80%85%EF%BC%8D%E2%80%8510/README.md)|
 |2493. 탑|[링크](./%EB%B0%B1%EC%A4%80/Gold/2493.%E2%80%85%ED%83%91/README.md)|
+|3109. 빵집|[링크](./%EB%B0%B1%EC%A4%80/Gold/3109.%E2%80%85%EB%B9%B5%EC%A7%91/README.md)|
 |9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/README.md)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
