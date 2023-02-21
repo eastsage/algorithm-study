@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class Main {
     static int n, m;
     static int[][] graph;
-    static final int INF = 1000000000; // 1,000,000,000
+    static final int INF = 200000000; // 1,000,000,000
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
