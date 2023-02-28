@@ -137,6 +137,7 @@
 |2493. 탑|[링크](./%EB%B0%B1%EC%A4%80/Gold/2493.%E2%80%85%ED%83%91/README.md)|
 |3109. 빵집|[링크](./%EB%B0%B1%EC%A4%80/Gold/3109.%E2%80%85%EB%B9%B5%EC%A7%91/README.md)|
 |7453. 합이 0인 네 정수|[링크](./%EB%B0%B1%EC%A4%80/Gold/7453.%E2%80%85%ED%95%A9%EC%9D%B4%E2%80%850%EC%9D%B8%E2%80%85%EB%84%A4%E2%80%85%EC%A0%95%EC%88%98/README.md)|
+|9252. LCS 2|[링크](./%EB%B0%B1%EC%A4%80/Gold/9252.%E2%80%85LCS%E2%80%852/README.md)|
 |9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/README.md)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
