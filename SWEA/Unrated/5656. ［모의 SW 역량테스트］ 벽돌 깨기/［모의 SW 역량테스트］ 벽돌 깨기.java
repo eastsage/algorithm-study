@@ -19,45 +19,17 @@ public class Solution {
             h = Integer.parseInt(st.nextToken());
             min = Integer.MAX_VALUE;
 
-            bricks = new int[h+1][w+1];
+            bricks = new int[h][w];
             for (int i = 0; i < h; i++) {
                 st = new StringTokenizer(br.readLine());
                 for (int j = 0; j < w; j++) {
                     bricks[i][j] = Integer.parseInt(st.nextToken());
                 }
             } // input end
+
             dfs(0, bricks);
             System.out.println("#" + tCase + " " + min);
         }
-
-//        tc1
-//        int target = getTarget(2, bricks);
-//        destroy(target, 2, bricks);
-//        drop(bricks);
-//
-//        target = getTarget(2, bricks);
-//        destroy(target, 2, bricks);
-//        drop(bricks);
-//
-//        target = getTarget(6, bricks);
-//        destroy(target, 6, bricks);
-//        drop(bricks);
-//
-//        print();
-//        System.out.println(getBricksAmount(bricks));
-
-//        //tc2
-//        int target = getTarget(2, bricks);
-//        destroy(target, 2, bricks);
-//        drop(bricks);
-//        print(bricks);
-//        System.out.println();
-//
-//        target = getTarget(2, bricks);
-//        destroy(target, 2, bricks);
-//        drop(bricks);
-//        print(bricks);
-//        System.out.println(getBricksAmount(bricks));
     }
 
     static void dfs(int depth, int[][] bricks) {
@@ -153,14 +125,13 @@ public class Solution {
         }
         return copied;
     }
-
-    static void print(int[][] bricks) {
-        for (int i = 0; i < h; i++) {
-            for (int j = 0; j < w; j++) {
-                System.out.print(bricks[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
+//    static void print(int[][] bricks) {
+//        for (int i = 0; i < h; i++) {
+//            for (int j = 0; j < w; j++) {
+//                System.out.print(bricks[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//    }
 
 }
