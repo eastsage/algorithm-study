@@ -35,6 +35,7 @@
 | 문제번호 | 링크 |
 | ----- | ----- |
 |4012. ［모의 SW 역량테스트］ 요리사|[링크](./SWEA/Unrated/4012.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EC%9A%94%EB%A6%AC%EC%82%AC/README.md)|
+|5656. ［모의 SW 역량테스트］ 벽돌 깨기|[링크](./SWEA/Unrated/5656.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EB%B2%BD%EB%8F%8C%E2%80%85%EA%B9%A8%EA%B8%B0/README.md)|
 ### 🚀 src
 | 문제번호 | 링크 |
 | ----- | ----- |
@@ -142,6 +143,7 @@
 |3109. 빵집|[링크](./%EB%B0%B1%EC%A4%80/Gold/3109.%E2%80%85%EB%B9%B5%EC%A7%91/README.md)|
 |6987. 월드컵|[링크](./%EB%B0%B1%EC%A4%80/Gold/6987.%E2%80%85%EC%9B%94%EB%93%9C%EC%BB%B5/README.md)|
 |7453. 합이 0인 네 정수|[링크](./%EB%B0%B1%EC%A4%80/Gold/7453.%E2%80%85%ED%95%A9%EC%9D%B4%E2%80%850%EC%9D%B8%E2%80%85%EB%84%A4%E2%80%85%EC%A0%95%EC%88%98/README.md)|
+|7576. 토마토|[링크](./%EB%B0%B1%EC%A4%80/Gold/7576.%E2%80%85%ED%86%A0%EB%A7%88%ED%86%A0/README.md)|
 |9252. LCS 2|[링크](./%EB%B0%B1%EC%A4%80/Gold/9252.%E2%80%85LCS%E2%80%852/README.md)|
 |9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/README.md)|
 ### 🚀 Silver
