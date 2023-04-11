@@ -1,0 +1,44 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        int n = Integer.parseInt(br.readLine());
+        Pos[] coordinates = new Pos[n];
+        for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            coordinates[i] = new Pos(x, y);
+        }
+
+        Arrays.sort(coordinates);
+
+        for (Pos pos : coordinates) {
+            System.out.println(pos.x + " " + pos.y);
+        }
+    }
+    private static class Pos implements Comparable<Pos> {
+        int x;
+        int y;
+
+        public Pos(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public int compareTo(Pos o) {
+            if (this.x == o.x) {
+                return this.y - o.y;
+            }
+            return this.x - o.x;
+        }
+    }
+}
