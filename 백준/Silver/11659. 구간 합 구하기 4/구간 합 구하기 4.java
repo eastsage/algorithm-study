@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class Main {
     static int[] arr;
     static int sum;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
@@ -31,7 +31,7 @@ public class Main {
             sb.append(arr[end[i]] - arr[start[i] - 1]);
             sb.append("\n");
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
 
     }
 }
