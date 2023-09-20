@@ -5,14 +5,17 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
+	static int n;
+	static int[] arr1;
+
 	public static void main(String[] args) throws IOException {
-	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	    StringTokenizer st;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
 		StringBuilder sb = new StringBuilder();
 
-		int n = Integer.parseInt(br.readLine());
+		n = Integer.parseInt(br.readLine());
 		st = new StringTokenizer(br.readLine());
-		int[] arr1 = new int[n];
+		arr1 = new int[n];
 		for (int i = 0; i < n; i++) {
 			arr1[i] = Integer.parseInt(st.nextToken());
 		}
@@ -20,16 +23,32 @@ public class Main {
 
 		int m = Integer.parseInt(br.readLine());
 		st = new StringTokenizer(br.readLine());
-		
+		int[] arr2 = new int[m];
 		for (int i = 0; i < m; i++) {
-			int num = Integer.parseInt(st.nextToken());
-			int idx = Arrays.binarySearch(arr1, num);
-			if (idx < 0) {
-				sb.append(0).append(" ");
-			} else {
-				sb.append(1).append(" ");
-			}
+			arr2[i] = Integer.parseInt(st.nextToken());
+		}
+
+		for (int i = 0; i < m; i++) {
+			sb.append(findNum(arr2[i])).append(" ");
 		}
 		System.out.println(sb);
+	}
+
+	static int findNum(int key) {
+		int low = 0;
+		int high = n - 1;
+		while (low <= high) {
+			int mid = (low + high) >>> 1;
+			int midVal = arr1[mid];
+
+			if (midVal < key) {
+				low = mid + 1;
+			} else if (midVal > key) {
+				high = mid - 1;
+			} else {
+				return 1;
+			}
+		}
+		return 0;
 	}
 }
