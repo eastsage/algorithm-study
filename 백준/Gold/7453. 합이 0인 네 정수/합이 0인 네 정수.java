@@ -1,64 +1,72 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
-
-    static int N;
-    static long answer = 0;
-    static int[][] data;
-    static int preSum[][];
-    static StringTokenizer st;
+    static int n;
+    static long cnt;
+    static int[] ab, cd;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
 
-        N = Integer.parseInt(br.readLine());
-        data = new int[N][4];
-        for (int i = 0; i < N; i++) {
+        n = Integer.parseInt(br.readLine());
+        int[] A = new int[n];
+        int[] B = new int[n];
+        int[] C = new int[n];
+        int[] D = new int[n];
+        ab = new int[n * n];
+        cd = new int[n * n];
+
+        for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
-            data[i][0] = Integer.parseInt(st.nextToken());
-            data[i][1] = Integer.parseInt(st.nextToken());
-            data[i][2] = Integer.parseInt(st.nextToken());
-            data[i][3] = Integer.parseInt(st.nextToken());
+            A[i] = Integer.parseInt(st.nextToken());
+            B[i] = Integer.parseInt(st.nextToken());
+            C[i] = Integer.parseInt(st.nextToken());
+            D[i] = Integer.parseInt(st.nextToken());
         }
-
-        preSum = new int[2][N * N];
-        int count = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                preSum[0][count] = data[i][0] + data[j][1];
-                preSum[1][count++] = data[i][2] + data[j][3];
+        int k = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                ab[k] = A[i] + B[j];
+                cd[k++] = C[i] + D[j];
             }
         }
-        Arrays.sort(preSum[0]);
-        Arrays.sort(preSum[1]);
-        int first = 0;
-        int second = preSum[0].length - 1;
+        Arrays.sort(ab);
+        Arrays.sort(cd);
+        // primitive(pivot quicksort) > wrapper(merge sort)
+//        Arrays.sort(cd, Comparator.reverseOrder());
 
-        int end = N * N;
-        while (first < end && 0 <= second) {
-            int sum =  preSum[0][first] + preSum[1][second];
-            int firstCnt =1;
-            int secondCnt = 1;
+        int p1 = 0;
+        int p2 = cd.length - 1;
+        int end = n * n;
+
+        while (p1 < end && 0 <= p2) {
+            int sum = ab[p1] + cd[p2];
+            long p1Cnt = 1;
+            long p2Cnt = 1;
+
             if (sum == 0) {
-                while (first <= end - 2 && preSum[0][first] == preSum[0][first + 1]) {
-                    firstCnt++;
-                    first++;
+                while (p1 <= end - 2 && ab[p1] == ab[p1 + 1]) {
+                    p1Cnt++;
+                    p1++;
                 }
-                while (0 < second && preSum[1][second] == preSum[1][second - 1]) {
-                    secondCnt++;
-                    second--;
-                }
-                answer += (long) firstCnt * secondCnt;
-            }
 
+                while (0 < p2 && cd[p2] == cd[p2 - 1]) {
+                    p2Cnt++;
+                    p2--;
+                }
+                cnt += p1Cnt * p2Cnt;
+            }
             if (sum < 0) {
-                first++;
-            } else{
-                second--;
+                p1++;
+            } else {
+                p2--;
             }
         }
-        System.out.println(answer);
+        System.out.println(cnt);
     }
 }
