@@ -1,66 +1,58 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.function.DoubleToIntFunction;
 
 public class Main {
-    static int n, m, a, b, result;
-    static Set<Integer>[] pToc, cTop;
+
+    static int m, n, a, b;
+    static long result;
     static boolean[] visited;
+    static List<Integer>[] edges;
+    static int[] arr;
+    static int[] dx = {1, -1, 0, 0};
+    static int[] dy = {0, 0, 1, -1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-
         n = Integer.parseInt(br.readLine());
+        visited = new boolean[n + 1];
         st = new StringTokenizer(br.readLine());
         a = Integer.parseInt(st.nextToken());
         b = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(br.readLine());
-
-        pToc = new Set[n + 1]; // index == 부모 & value == 자식
-        cTop = new Set[n + 1]; // index == 부모 & value == 자식
-        visited = new boolean[n + 1];
-        result = -1;
-        for (int i = 0; i < n + 1; i++) {
-            pToc[i] = new HashSet();
-            cTop[i] = new HashSet();
+        edges = new List[n + 1];
+        for (int i = 1; i <= n; i++) {
+            edges[i] = new ArrayList<>();
         }
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
-            int parent = Integer.parseInt(st.nextToken());
-            int child = Integer.parseInt(st.nextToken());
-            pToc[parent].add(child);
-            cTop[child].add(parent);
+            int n1 = Integer.parseInt(st.nextToken());
+            int n2 = Integer.parseInt(st.nextToken());
+            edges[n1].add(n2);
+            edges[n2].add(n1);
         }
 
-        visited[a] = true;
-        dfs(0, a);
-
-        System.out.println(result);
+        recur(a, 0);
+        if (result == 0) {
+            System.out.println(-1);
+        }
     }
 
-    static void dfs(int cnt, int node) {
+    private static void recur(int node, int chon) {
+        visited[node] = true;
+
         if (node == b) {
-            result = cnt;
+            result++;
+            System.out.println(chon);
             return;
         }
-        for (Integer child : pToc[node]) {
-            if (!visited[child]) {
-                visited[child] = true;
-                dfs(cnt + 1, child);
-            }
-        }
-        for (Integer parent : cTop[node]) {
-            if (!visited[parent]) {
-                visited[parent] = true;
-                dfs(cnt + 1, parent);
-            }
-        }
 
-
+        for (Integer nxt : edges[node]) {
+            if (visited[nxt]) continue;
+            recur(nxt, chon + 1);
+        }
     }
-
 }
