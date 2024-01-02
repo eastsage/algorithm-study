@@ -23,20 +23,20 @@ public class Main {
 
         long max = 1;
         while (b >= max) {
-            max = (long) Math.pow(2, ++powB);
+            max = (long)Math.pow(2, ++powB);
         }
         max = 1;
         while (a >= max) {
-            max = (long) Math.pow(2, ++powA);
+            max = (long)Math.pow(2, ++powA);
         }
 
         for (int i = 1; i < powB; i++) {
-            long num = (long) Math.pow(2, i);
-            result += (long) Math.pow(2, i - 1) * (b / num);
+            long num = (long)Math.pow(2, i);
+            result += (long)Math.pow(2, i - 1) * (b / num);
         }
         for (int i = 1; i < powA; i++) {
-            long num = (long) Math.pow(2, i);
-            result -= (long) Math.pow(2, i - 1) * (a / num);
+            long num = (long)Math.pow(2, i);
+            result -= (long)Math.pow(2, i - 1) * (a / num);
         }
         result += b - a;
 
