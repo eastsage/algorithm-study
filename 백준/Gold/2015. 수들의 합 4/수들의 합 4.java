@@ -1,40 +1,32 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 public class Main {
-    static int n, k;
-    static long cnt;
-    static long[] prefixSum;
-    static Map<Long, List> map = new HashMap<>();
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		long k = Long.parseLong(st.nextToken());
 
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        k = Integer.parseInt(st.nextToken());
-        prefixSum = new long[n + 1];
-        st = new StringTokenizer(br.readLine());
-        for (int i = 1; i <= n; i++) {
-            prefixSum[i] = Long.parseLong(st.nextToken()) + prefixSum[i - 1];
-            if (prefixSum[i] == k) {
-                cnt++;
-            }
+		st = new StringTokenizer(br.readLine());
+		Map<Long, Long> map = new HashMap<>();
+		map.put(0l, 1l);
+		long[] arr = new long[n + 1];
+		long cnt = 0;
 
-            if (map.containsKey(prefixSum[i] - k)) {
-                cnt += map.get(prefixSum[i] - k).size();
-            }
-            if (map.containsKey(prefixSum[i])) {
-                map.get(prefixSum[i]).add(i);
-            } else {
-                ArrayList<Integer> tmp = new ArrayList<>();
-                tmp.add(i);
-                map.put(prefixSum[i], tmp);
-            }
+		for (int i = 1; i <= n; i++) {
+			arr[i] = Long.parseLong(st.nextToken()) + arr[i - 1];
+			cnt += map.getOrDefault(arr[i] - k, 0l);
+			map.put(arr[i], map.getOrDefault(arr[i], 0l) + 1);
+		}
 
-//            System.out.println(map);
-//            System.out.println(cnt);
-        }
-        System.out.println(cnt);
-    }
+
+		System.out.println(cnt);
+		
+	}
 }
