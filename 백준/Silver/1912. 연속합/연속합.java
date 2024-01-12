@@ -27,9 +27,6 @@ public class Main {
             }
             max = Math.max(max, prefixSum[i]);
         }
-//        System.out.println(Arrays.toString(arr));
-//        System.out.println(Arrays.toString(prefixSum));
-//        System.out.println("max = " + max);
         System.out.println(max);
     }
 }
