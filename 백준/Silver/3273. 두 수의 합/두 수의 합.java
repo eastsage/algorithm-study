@@ -1,36 +1,41 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 
 public class Main {
+
 	public static void main(String[] args) throws IOException {
-	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
 
 		int n = Integer.parseInt(br.readLine());
-		long[] arr = new long[n];
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		int[] arr = new int[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = Long.parseLong(st.nextToken());
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
+		int x = Integer.parseInt(br.readLine());
 		Arrays.sort(arr);
-		int k = Integer.parseInt(br.readLine());
-		int s = 0, result = 0;
+
+		int s = 0;
 		int e = n - 1;
+		int cnt = 0;
 
 		while (s < e) {
-			if (arr[s] + arr[e] > k) {
-				e--;
-			} else if (arr[s] + arr[e] < k) {
+			int sum = arr[s] + arr[e];
+			if (sum == x) {
 				s++;
-			} else {
-				result++;
 				e--;
-				s++;
+				cnt++;
 			}
+			if (sum > x) e--;
+			if(sum < x) s++;
 		}
-		System.out.println(result);
-
+		System.out.println(cnt);
 	}
 }
