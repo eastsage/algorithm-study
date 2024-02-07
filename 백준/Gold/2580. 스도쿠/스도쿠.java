@@ -1,80 +1,69 @@
-import java.util.*;
-import java.io.*;
-
-class Pair{
-    int y;
-    int x;
-
-    public Pair(int y, int x){
-        this.y = y;
-        this.x = x;
-    }
-}
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class Main {
-    static int[][] sudoku = new int[9][9];
-    static ArrayList<Pair> req = new ArrayList<>();
+	static int n;
+	static int[] arr;
+	static int[][] sudoku;
+	static List<int[]> emptyPos = new ArrayList<>();
+	static StringBuilder sb = new StringBuilder();
 
-    static void printSudoku(){
-        StringBuilder sb = new StringBuilder();
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		sudoku = new int[9][9];
+		for (int i = 0; i < 9; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < 9; j++) {
+				sudoku[i][j] = Integer.parseInt(st.nextToken());
+				if (sudoku[i][j] == 0) {
+					emptyPos.add(new int[] {i, j});
+				}
+			}
+		}
+		makeSudoku(0);
+	}
 
-        for(int i=0;i<9;i++){
-            for(int j=0;j<9;j++){
-                sb.append(sudoku[i][j]);
-                sb.append(" ");
-            }
-            sb.append("\n");
-        }
+	static void makeSudoku(int cur) {
+		if (cur == emptyPos.size()) {
+			for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+					sb.append(sudoku[i][j]).append(" ");
+				}
+				sb.append("\n");
+			}
+			System.out.println(sb);
+			System.exit(0);
+		}
+		int[] pos = emptyPos.get(cur);
+		int x = pos[0];
+		int y = pos[1];
+		for (int i = 1; i <= 9; i++) {
+			if (isValid(x, y, i)) {
+				sudoku[x][y] = i;
+				makeSudoku(cur + 1);
+				sudoku[x][y] = 0;
+			}
+		}
+	}
 
-        System.out.println(sb);
-    }
+	static boolean isValid(int x, int y, int num) {
+		for (int i = 0; i < 9; i++) {
+			if (sudoku[x][i] == num) return false;
+			if (sudoku[i][y] == num) return false;
+		}
 
-    static boolean isPossibleNum(int y, int x, int num){
-        int y_start =  (y/3)*3;
-        int x_start = (x/3)*3;
-
-        for(int i=0;i<9;i++){
-            // 가로 기준 탐색
-            if(sudoku[y][i]==num) return false;
-
-            // 세로 기준 탐색
-            if(sudoku[i][x]==num) return false;
-
-            // 사각형 기준 탐색
-            if(sudoku[y_start + i/3][x_start + i%3]==num) return false;
-        }
-        return true;
-    }
-
-    static void backtracking(int cnt){
-        if(cnt == req.size()){
-            printSudoku();
-            System.exit(0);
-        }
-
-        int y = req.get(cnt).y;
-        int x = req.get(cnt).x;
-        for(int j=1;j<=9;j++){
-            if(isPossibleNum(y,x,j)){
-                sudoku[y][x] = j;
-                backtracking(cnt+1);
-                sudoku[y][x] = 0;
-            }
-        }
-    }
-
-    public static void main(String[] args) throws Exception{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        for(int i=0;i<9;i++){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-
-            for(int j=0;j<9;j++){
-                sudoku[i][j] = Integer.parseInt(st.nextToken());
-                if(sudoku[i][j] == 0) req.add(new Pair(i,j));
-            }
-        }
-
-        backtracking(0);
-    }
+		int startX = (x / 3) * 3;
+		int startY = (y / 3) * 3;
+		for (int i = startX; i < startX + 3; i++) {
+			for (int j = startY; j < startY + 3; j++) {
+				if (sudoku[i][j] == num) return false;
+			}
+		}
+		return true;
+	}
 }
