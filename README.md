@@ -232,6 +232,10 @@
 |9205. 맥주 마시면서 걸어가기|[링크](./%EB%B0%B1%EC%A4%80/Gold/9205.%E2%80%85%EB%A7%A5%EC%A3%BC%E2%80%85%EB%A7%88%EC%8B%9C%EB%A9%B4%EC%84%9C%E2%80%85%EA%B1%B8%EC%96%B4%EA%B0%80%EA%B8%B0/README.md)|
 |9252. LCS 2|[링크](./%EB%B0%B1%EC%A4%80/Gold/9252.%E2%80%85LCS%E2%80%852/README.md)|
 |9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/README.md)|
+### 🚀 Gold IV
+| 문제번호 | 링크 |
+| ----- | ----- |
+|17351. 3루수는 몰라|[링크](./%EB%B0%B1%EC%A4%80/Gold%20IV/17351.%E2%80%853%EB%A3%A8%EC%88%98%EB%8A%94%E2%80%85%EB%AA%B0%EB%9D%BC/README.md)|
 ### 🚀 Platinum
 | 문제번호 | 링크 |
 | ----- | ----- |
