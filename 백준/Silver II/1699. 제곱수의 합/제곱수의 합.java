@@ -18,31 +18,30 @@ public class Main {
 		Arrays.fill(dp, -1);
 		dp[1] = 1;
 
-		ans(n);
+		recur(n);
 		System.out.println(dp[n]);
 	}
 
-	public static void ans(int n) {
-
-
-		dp[1] = 1;
-
-		for(int i=2; i<=n; i++) {
-			int min=100001;
-
-			for(int j=1; j<=(int)i/2; j++) {
-
-				if(j*j == i) {
-					min = 1;
-					break;
-				}
-				else{
-					min = Math.min(min, dp[j]+dp[i-j]);
-				}
-
-			}
-			dp[i] = min;
+	public static int recur(int n) {
+		if (n < 0) {
+			return 99999999;
 		}
-		return;
+
+		if (n == 0) {
+			return 0;
+		}
+
+		if (dp[n] != -1) {
+			return dp[n];
+		}
+
+		int tmp = 99999999;
+		for (int i = 1; i <= Math.sqrt(n); i++) {
+			if (n - i * i >= 0) {
+				tmp = Math.min(tmp, recur(n - (i * i)) + 1);
+			}
+		}
+
+		return dp[n] = tmp;
 	}
 }
