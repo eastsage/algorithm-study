@@ -10,9 +10,6 @@ public class Main {
     static int[] w, v;
     static int[][] dp;
 
-    /**
-     * 완탐 돌려서 가장 먼저 승리한 경우의 수의 승리자가 winner 고정이라고 할 수 있음
-     */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
