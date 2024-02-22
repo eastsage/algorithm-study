@@ -22,13 +22,13 @@ public class Main {
 		dp = new int[555][555];
 		for (int i = 0; i < 5; i++) {
 			st = new StringTokenizer(br.readLine());
-			bucket[0] = Integer.parseInt(st.nextToken());
-			bucket[1] = Integer.parseInt(st.nextToken());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
 			for (int[] ints : dp) {
 				Arrays.fill(ints, -1);
 			}
-			recur(bucket[0], bucket[1]);
-			if (dp[bucket[0]][bucket[1]] == 1) {
+			recur(a, b);
+			if (recur(a, b)) {
 				System.out.println("A");
 			} else {
 				System.out.println("B");
@@ -36,19 +36,19 @@ public class Main {
 		}
 
 	}
-	static int recur(int a, int b) {
+	static boolean recur(int a, int b) {
 		if (a < 0 || b < 0) {
-			return 1;
+			return true;
 		}
 		if (dp[a][b] != -1) {
-			return dp[a][b];
+			return dp[a][b] == 1;
 		}
 		dp[a][b] = 0;
 		for (int i : bead) {
-			if (recur(a - i, b) == 0 || recur(a, b - i) == 0) {
+			if (!recur(a - i, b) || !recur(a, b - i)) {
 				dp[a][b] = 1;
 			}
 		}
-		return dp[a][b];
+		return dp[a][b] == 1;
 	}
 }
