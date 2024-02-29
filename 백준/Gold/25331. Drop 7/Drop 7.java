@@ -41,7 +41,9 @@ class Main {
             }
 
             result = Math.min(result, count());
-
+            
+            if (result == 0) break;
+            
             init();
         }
 
@@ -130,11 +132,11 @@ class Main {
     }
 
     private static int countWidth(int x, int y) {
-        int widthCount = 0;
+        int wCnt = 0;
 
         for (int i = y; i < 7; i++) {
             if (board[x][i] != 0) {
-                widthCount++;
+                wCnt++;
             } else {
                 break;
             }
@@ -142,13 +144,13 @@ class Main {
 
         for (int i = y - 1; i > -1; i--) {
             if (board[x][i] != 0) {
-                widthCount++;
+                wCnt++;
             } else {
                 break;
             }
         }
 
-        return widthCount;
+        return wCnt;
     }
 
     private static void dropAfterDestroy(int y) {
