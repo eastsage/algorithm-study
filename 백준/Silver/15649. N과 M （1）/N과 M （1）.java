@@ -1,60 +1,49 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
-//nPr
-//N개 중에 R개를 뽑아 순서있게 늘어 놓기
-public class Main {
-    static int N, R, totalCount;
-    static int[] result, numbers; //result: 순열로 뽑힌 숫자들이 있는 배열 numbers: 전체 데이터 배열
-    static boolean[] isSelected; // 이미 뽑힌숫자 체크
+class Main {
+    static int n, m, cnt;
+    static int[] dp, arr, selected;
+    static int[][] stats;
+    static List<int[]> aList = new ArrayList<>();
+    static boolean[] visited;
+    static int[] dx = {0, 1, -1, 0, 1, 1, -1, -1};
+    static int[] dy = {1, 0, 0, -1, 1, -1, 1, -1};
+    static StringBuilder sb = new StringBuilder();
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        N = sc.nextInt();
-        R = sc.nextInt();
-
-        numbers = new int[N];
-        result = new int[R];
-        isSelected = new boolean[N];
-
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = i + 1;
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        st = new StringTokenizer(br.readLine());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        arr = new int[n + 1];
+        visited = new boolean[n + 1];
+        selected = new int[m];
+        for (int i = 1; i <= n; i++) {
+            arr[i] = i;
         }
+        recur(0);
+        System.out.println(sb);
 
-        perm(0);
-//        System.out.println("총 경우의 수: " + totalCount);
     }
-
-    //현재까지 뽑힌 숫자 개수를 입력받아 체크 한 뒤 종료하거나 숫자를 뽑거나 함
-    //cnt: 이제까지 뽑은 순열을 구성하는 숫자 개수
-    private static void perm(int cnt) {
-        if (cnt == R) {
-            totalCount++;
-            System.out.println(toString(result));
+    static void recur(int depth) {
+        if (depth == m) {
+            for (int i : selected) {
+                sb.append(i).append(" ");
+            }
+            sb.append("\n");
             return;
         }
-        for (int i = 0; i < isSelected.length; i++) {
-            if (!isSelected[i]) {
-                isSelected[i] = true;
-                result[cnt] = numbers[i]; // i번째 값을 선택
-
-                perm(cnt + 1); // 다음숫자 뽑기
-                isSelected[i] = false;
-            }
+        for (int i = 1; i <= n; i++) {
+            if (visited[i]) continue;
+            visited[i] = true;
+            selected[depth] = i;
+            recur(depth + 1);
+            visited[i] = false;
         }
-    }
-    public static String toString(int[] a) {
-        if (a == null)
-            return "null";
-        int iMax = a.length - 1;
-        if (iMax == -1)
-            return "";
-
-        StringBuilder b = new StringBuilder();
-        for (int i = 0; i < a.length; i++) {
-            b.append(a[i]);
-            b.append(" ");
-        }
-        return b.toString();
     }
 }
