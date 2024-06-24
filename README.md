@@ -150,6 +150,7 @@
 ### 🚀 Gold
 | 문제번호 | 링크 |
 | ----- | ----- |
+|1083. 소트|[링크](./%EB%B0%B1%EC%A4%80/Gold/1083.%E2%80%85%EC%86%8C%ED%8A%B8/%EC%86%8C%ED%8A%B8.java)|
 |10942. 팰린드롬？|[링크](./%EB%B0%B1%EC%A4%80/Gold/10942.%E2%80%85%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC%EF%BC%9F/README.md)|
 |1107. 리모컨|[링크](./%EB%B0%B1%EC%A4%80/Gold/1107.%E2%80%85%EB%A6%AC%EB%AA%A8%EC%BB%A8/%EB%A6%AC%EB%AA%A8%EC%BB%A8.java)|
 |11404. 플로이드|[링크](./%EB%B0%B1%EC%A4%80/Gold/11404.%E2%80%85%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C.java)|
