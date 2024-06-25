@@ -12,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         StringTokenizer st;
         st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken());
@@ -52,10 +53,11 @@ public class Main {
 
         for (int j = 0; j < n; j++) {
             for (int k = 0; k < m; k++) {
-                System.out.print(arr[j][k] + " ");
+                sb.append(arr[j][k]).append(" ");
             }
-            System.out.println();
+            sb.append("\n");
         }
 
+        System.out.println(sb);
     }
 }
