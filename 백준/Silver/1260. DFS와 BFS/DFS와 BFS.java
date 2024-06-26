@@ -42,11 +42,10 @@ public class Main {
     }
 
     static void dfs(int depth, int cur) {
-        if (cur == v) visited[cur] = true;
+        visited[cur] = true;
         sb.append(cur).append(" ");
         for (Integer nxt : map[cur]) {
             if (visited[nxt]) continue;
-            visited[nxt] = true;
             dfs(depth + 1, nxt);
         }
     }
