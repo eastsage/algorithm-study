@@ -1,68 +1,69 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
-    static int N, M, start;
-    static boolean[][] matrix;
+    static int n, m, v, cnt;
+    static int[][] arr;
+    static ArrayList<Integer>[] map;
     static boolean[] visited;
-    static StringBuilder sb;
+    static int[] dx = {1, 0, -1, 0};
+    static int[] dy = {0, 1, 0, -1};
+    static StringBuilder sb = new StringBuilder();
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        sb = new StringBuilder();
-
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        start = Integer.parseInt(st.nextToken());
-        matrix = new boolean[N + 1][N + 1];
-        visited = new boolean[N + 1];
-
-        for (int i = 0; i < M; i++) {
-            st = new StringTokenizer(br.readLine());
-            int p1 = Integer.parseInt(st.nextToken());
-            int p2 = Integer.parseInt(st.nextToken());
-            matrix[p1][p2] = true;
-            matrix[p2][p1] = true;
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        v = Integer.parseInt(st.nextToken());
+        map = new ArrayList[n + 1];
+        visited = new boolean[n + 1];
+        for (int i = 1; i <= n; i++) {
+            map[i] = new ArrayList<>();
         }
-        dfs(start);
-        sb.append(System.lineSeparator());
+        for (int i = 0; i < m; i++) {
+            st = new StringTokenizer(br.readLine());
+            int v1 = Integer.parseInt(st.nextToken());
+            int v2 = Integer.parseInt(st.nextToken());
+            map[v1].add(v2);
+            map[v2].add(v1);
+        }
+        for (int i = 1; i <= n; i++) {
+            Collections.sort(map[i]);
+        }
+        dfs(0, v);
         Arrays.fill(visited, false);
+        sb.append("\n");
         bfs();
         System.out.println(sb);
-    }
-    static void dfs(int vertex) {
-        sb.append(vertex).append(" ");
-        visited[vertex] = true;
 
-        for (int i = 1; i <= N; i++) {
-            if (matrix[vertex][i] && !visited[i]) {
-                dfs(i);
-            }
+    }
+
+    static void dfs(int depth, int cur) {
+        if (cur == v) visited[cur] = true;
+        sb.append(cur).append(" ");
+        for (Integer nxt : map[cur]) {
+            if (visited[nxt]) continue;
+            visited[nxt] = true;
+            dfs(depth + 1, nxt);
         }
     }
+
     static void bfs() {
-        Deque<Integer> q = new ArrayDeque<>();
-        q.offer(start);
-        visited[start] = true;
-
+        Queue<Integer> q = new ArrayDeque<>();
+        q.offer(v);
+        visited[v] = true;
         while (!q.isEmpty()) {
-
-            int size = q.size();
-            for (int i = 0; i < size; i++) {
-                Integer tmp = q.poll();
-                sb.append(tmp).append(" ");
-                for (int j = 1; j <= N; j++) {
-                    if (matrix[tmp][j] && !visited[j]) {
-                        q.offer(j);
-                        visited[j] = true;
-                    }
-                }
+            int cur = q.poll();
+            sb.append(cur).append(" ");
+            for (Integer nxt : map[cur]) {
+                if (visited[nxt]) continue;
+                visited[nxt] = true;
+                q.offer(nxt);
             }
         }
+
     }
 }
