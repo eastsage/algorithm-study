@@ -1,43 +1,44 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
-    static int n;
-    static int m;
-    static int[] result;
+    static int n, m;
+    static int[] selected;
+    static int[][] map, dp;
+    static boolean[] visited;
+    static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringTokenizer st;
+        st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
-        result = new int[m];
-        Combination(0, 1);
-
+        visited = new boolean[n + 1];
+        selected = new int[m];
+        recur(0, 1);
+        System.out.println(sb);
     }
 
-    static void Combination(int cnt, int start) {
-        if (cnt == m) {
-            System.out.println(toString(result));
+    static void recur(int depth, int start) {
+        if (depth == m) {
+            for (int i : selected) {
+                sb.append(i).append(" ");
+            }
+            sb.append("\n");
             return;
         }
         for (int i = start; i <= n; i++) {
-            result[cnt] = i;
-            Combination(cnt + 1, i + 1);
-        }
-    }
-
-    static String toString(int[] a) {
-        int iMax = a.length - 1;
-        StringBuilder b = new StringBuilder();
-        for (int i = 0; ; i++) {
-            b.append(a[i]);
-            if (i == iMax) {
-                return b.toString();
-            }
-            b.append(" ");
+            if (visited[i]) continue;
+            visited[i] = true;
+            selected[depth] = i;
+            recur(depth + 1, i + 1);
+            visited[i] = false;
         }
     }
 }
