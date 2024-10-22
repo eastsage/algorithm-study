@@ -10,6 +10,9 @@ public class Main {
     static boolean[] visited;
     static StringBuilder sb = new StringBuilder();
 
+    /**
+     * cycle의 크기의 합 == 총 요소 - cycle 갯수 
+     */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
@@ -49,5 +52,3 @@ public class Main {
 
     }
 }
-//0 1   2   3       300 400 9012
-//1 300 2   9012    3   400 0
