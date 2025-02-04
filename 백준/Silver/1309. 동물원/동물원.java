@@ -23,25 +23,26 @@ public class Main {
         System.out.println(recur(0, 0));
     }
 
-    static int recur(int depth, int prev) {
+    static int recur(int depth, int state) {
         if (depth == n) {
             return 1;
         }
-        if (dp[depth][prev] != -1) {
-            return dp[depth][prev];
+        if (dp[depth][state] != -1) {
+            return dp[depth][state];
         }
-        int tmp = 0;
-        if (prev == 0) {
-            tmp += recur(depth + 1, 0);
-            tmp += recur(depth + 1, 1);
-            tmp += recur(depth + 1, 2);
-        } else if (prev == 1) {
-            tmp += recur(depth + 1, 0);
-            tmp += recur(depth + 1, 2);
+
+        int res = 0;
+        if (state == 0) {
+            // 이전 열이 비어 있을 때:
+            // 현재 열에서 사자를 배치하지 않는 경우: 다음 상태 0
+            // 현재 열에서 사자를 배치하는 경우: 2가지 선택, 다음 상태 1
+            res = recur(depth + 1, 0) + 2 * recur(depth + 1, 1);
         } else {
-            tmp += recur(depth + 1, 0);
-            tmp += recur(depth + 1, 1);
+            // 이전 열에 사자가 있을 때:
+            // 현재 열에서 사자를 배치하지 않는 경우: 다음 상태 0
+            // 현재 열에서 사자를 배치하는 경우: 1가지 (반대쪽 한 칸), 다음 상태 1
+            res = recur(depth + 1, 0) + recur(depth + 1, 1);
         }
-        return dp[depth][prev] = tmp % 9901;
+        return dp[depth][state] = res % 9901;
     }
 }
